@@ -4,6 +4,6 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "rewrites": [
-    { "source": "/", "destination": "/goulet/" }
+    { "source": "/", "destination": "/goulet/index.html" }
   ]
 }

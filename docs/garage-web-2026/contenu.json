@@ -1,0 +1,210 @@
+{
+  "title": "Garages automobiles — Pourquoi un site web en 2026",
+  "slides": [
+    {
+      "layout": "cover",
+      "kicker": "GARAGES AUTOMOBILES • QUÉBEC • 2026",
+      "title": "Votre prochain client\nvous cherche déjà.",
+      "body": [
+        "Un site web pour être trouvé, inspirer confiance et transformer l’intérêt en rendez-vous.",
+        "Votre réputation se construit à l’atelier. Votre site la rend visible."
+      ],
+      "notes": "Présentation commerciale pour propriétaires de garages indépendants. Recherche arrêtée au 24 septembre 2026. Les statistiques canadiennes et américaines sont distinguées; les exemples sont fictifs. Argument commercial, sans promesse de revenus."
+    },
+    {
+      "layout": "compare",
+      "kicker": "LE PORTRAIT CANADIEN • DONNÉES 2023",
+      "title": "Avec un site… ou sans :\nun écart encore bien réel.",
+      "body": [
+        "Microentreprises • 0 à 4 employés",
+        "45,0 % avec un site web",
+        "55,0 % sans site web*",
+        "Entreprises • 5 employés ou plus",
+        "77,9 % avec un site web",
+        "22,1 % sans site web*"
+      ],
+      "source": "Statistique Canada • tableau 22-10-0120-01 • 2023",
+      "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2210012001",
+      "notes": "Entreprises du secteur privé dans le champ de l’enquête canadienne. Les microentreprises sont exclues du total 5 employés ou plus. Sans site = complément calculé de 100 % moins proportion avec site; ne signifie pas sans présence en ligne (réseaux, annuaires). Année statistique 2023, publication 2024. Ce ne sont pas des chiffres propres aux garages. Aucune mesure de revenu causal.",
+      "stat": "45 % / 77,9 %"
+    },
+    {
+      "layout": "stats",
+      "kicker": "LA CONFIANCE • CANADA, 2025",
+      "title": "Le site influence déjà\nla préférence du client.",
+      "stat": "64 %",
+      "body": [
+        "préfèrent magasiner auprès d’un commerce qui possède un site web.",
+        "35 % disent ne pas faire confiance aux entreprises ou organisations sans site.",
+        "Pour votre garage : rendre l’équipe, les services et les coordonnées faciles à vérifier."
+      ],
+      "source": "CIRA • Canadian Internet Trends 2025 • n = 2 000",
+      "url": "https://www.cira.ca/en/resources/news/state-of-internet/digital-dollars-national-impact-the-rise-of-canadian-e-commerce-patriotism/",
+      "notes": "CIRA : sondage Strategic Counsel, panel en ligne de 2 000 internautes canadiens de 18 ans et plus, mars 2025. Le 64 % concerne une préférence pour les commerces avec site. Le 35 % vise les entreprises ou organisations sans site. Attitudes déclarées, pas un taux de clients perdus; ni étude spécifique aux garages ni preuve de causalité."
+    },
+    {
+      "layout": "stats",
+      "kicker": "LE PARCOURS CLIENT • ÉTATS-UNIS, 2026",
+      "title": "Les bons avis mènent\nsouvent au site.",
+      "stat": "54 %",
+      "body": [
+        "déclarent être susceptibles de consulter le site après avoir lu des avis positifs.",
+        "Avis → site → services et preuves → demande de rendez-vous.",
+        "Votre site donne une suite concrète à votre réputation."
+      ],
+      "source": "BrightLocal • Local Consumer Review Survey 2026 • n = 1 002",
+      "url": "https://www.brightlocal.com/research/local-consumer-review-survey/",
+      "notes": "Panel de 1 002 adultes américains via SurveyMonkey, publié le 11 février 2026. Question à choix multiples sur actions probables après avis positifs; comportement déclaré, pas une conversion mesurée. Ne pas transposer le pourcentage à tous les Québécois. Le parcours représenté est une illustration."
+    },
+    {
+      "layout": "stats",
+      "kicker": "LE MARCHÉ AUTOMOBILE • CANADA, 2026",
+      "title": "Chaque visite mérite\nd’être gagnée.",
+      "stat": "363 $",
+      "body": [
+        "de dépense moyenne par visite dans un garage indépendant.",
+        "La part des visites chez les indépendants passe de 26 % en 2025 à 23 % en 2026.",
+        "Un site aide à expliquer pourquoi choisir votre atelier."
+      ],
+      "source": "J.D. Power • Canada CSI-LT 2026 • n = 10 262",
+      "url": "https://www.jdpower.com/business/press-releases/2026-canada-customer-service-index-long-term-csi-lt-study",
+      "notes": "Publié le 10 septembre 2026. 10 262 propriétaires de véhicules de 4 à 12 ans, sondés mars–juin 2026. Dollars canadiens. Dépense moyenne, pas profit. La baisse de part de visites ne démontre aucun effet de l’absence de site. Le bénéfice proposé du site est une recommandation commerciale."
+    },
+    {
+      "layout": "compare",
+      "kicker": "MISE EN SITUATION • DEUX GARAGES FICTIFS",
+      "title": "Mardi, 20 h 40.\nUn client cherche un garage.",
+      "body": [
+        "Sans site propre",
+        "Il trouve une fiche, mais peu de détails sur ses besoins.",
+        "Il doit attendre l’ouverture pour poser ses questions.",
+        "Avec un site utile",
+        "Il vérifie les services, l’équipe et les modalités.",
+        "Il envoie sa demande; le garage la confirme à l’ouverture."
+      ],
+      "notes": "Scénario illustratif, pas une expérience ni un résultat mesuré. Les deux garages peuvent avoir une fiche Google. Un garage sans site peut aussi recevoir des demandes via d’autres plateformes. Ici, la différence est la clarté et la centralisation sur un site contrôlé par le garage. Formulaire 24/7 ne signifie pas rendez-vous automatiquement confirmé."
+    },
+    {
+      "layout": "cards",
+      "kicker": "TROIS FONCTIONS QUI VENDENT",
+      "title": "Être trouvé.\nRassurer. Faire agir.",
+      "body": [
+        "VISIBILITÉ — Des pages claires : freins, pneus, entretien et ville desservie.",
+        "CONFIANCE — Photos réelles, équipe, certifications vérifiées et avis authentiques.",
+        "CONTACT — Bouton d’appel, itinéraire et demande de rendez-vous sur mobile."
+      ],
+      "notes": "Ce sont les mécanismes proposés, pas des statistiques. Un site doit être rapide, accessible et tenu à jour. Les pages locales doivent apporter de l’information réelle. Aucun classement Google ou placement dans une réponse IA n’est garanti."
+    },
+    {
+      "layout": "compare",
+      "kicker": "RENDEZ-VOUS AUTOMOBILES • ÉTATS-UNIS, 2025",
+      "title": "Le rendez-vous en ligne\nfait déjà partie du marché.",
+      "body": [
+        "Chez les concessionnaires",
+        "26 % prennent rendez-vous en ligne.",
+        "Un canal déjà bien utilisé.",
+        "Chez les indépendants",
+        "10 % prennent rendez-vous en ligne.",
+        "Une option à rendre simple et visible."
+      ],
+      "source": "CDK • Service Shopper 5.0 • n = 2 051 • p. 16",
+      "url": "https://impel.ai/wp-content/uploads/2025/11/CDK_2025-service-shopper-study.pdf",
+      "notes": "Étude américaine commerciale CDK publiée le 3 novembre 2025. Comparaison par type de prestataire, pas selon présence/absence de site. Ces données ne prouvent ni demande non satisfaite de 16 points ni hausse de revenu. PDF auteur CDK hébergé chez Impel. Méthodologie publique limitée."
+    },
+    {
+      "layout": "steps",
+      "kicker": "UN ÉCOSYSTÈME QUI TRAVAILLE ENSEMBLE",
+      "title": "Google vous fait découvrir.\nLe site approfondit la relation.",
+      "body": [
+        "FICHE GOOGLE — Adresse, horaires, itinéraire, avis et lien vers le site.",
+        "SITE WEB — Services, preuves, réponses et demande de rendez-vous.",
+        "ÉQUIPE — Confirmation, diagnostic et expérience client qui fidélise."
+      ],
+      "notes": "Recommandation pratique. Une fiche Google et Facebook peuvent générer des clients sans site. Le site ajoute une destination dont le contenu et le domaine sont contrôlés par l’entreprise. Il ne remplace ni un bon accueil téléphonique ni la qualité mécanique."
+    },
+    {
+      "layout": "cards",
+      "kicker": "LE SITE ESSENTIEL D’UN GARAGE",
+      "title": "Simple pour le client.\nUtile pour votre équipe.",
+      "body": [
+        "Services précis : véhicules acceptés, freins, pneus, entretien, diagnostic.",
+        "Preuves réelles : atelier, équipe, avis et engagements vérifiables.",
+        "Contact immédiat : téléphone, carte, horaires et formulaire court.",
+        "Suivi fiable : accusé de réception et délai de réponse annoncé."
+      ],
+      "notes": "MVP suggéré : accueil, services, à propos/preuves, contact/rendez-vous. Ajouter une politique de confidentialité adaptée et limiter les données collectées. Ne pas faire de promesses de certification, de prix ou de disponibilité sans validation du garage. Intégrer un calendrier seulement si les créneaux sont réellement gérés."
+    },
+    {
+      "layout": "stats",
+      "kicker": "SIMULATION • HYPOTHÈSES, PAS UNE PRÉVISION",
+      "title": "Combien de visites pour\ncouvrir le coût du site ?",
+      "stat": "5 visites / mois",
+      "body": [
+        "Budget fictif : 3 000 $ de création amortis sur 24 mois + 125 $/mois = 250 $/mois.",
+        "Hypothèse de contribution : 60 $ par visite supplémentaire, après coûts variables.",
+        "250 $ ÷ 60 $ = 4,17 → 5 visites supplémentaires par mois."
+      ],
+      "notes": "Simulation en CAD, hors taxes, financement, publicité et coût du temps interne. Les 60 $ sont une hypothèse distincte de la dépense moyenne J.D. Power. À 30 $ de contribution il faut 9 visites; à 100 $, 3 visites. Ne compter que visites réellement additionnelles, réalisées et attribuables; déplacement du téléphone vers web n’est pas une vente nouvelle. L’amortissement est un outil de décision et non une récupération immédiate du débours initial."
+    },
+    {
+      "layout": "cards",
+      "kicker": "LES OBJECTIONS DES PROPRIÉTAIRES",
+      "title": "Votre réalité devient\nle point de départ.",
+      "body": [
+        "« J’ai déjà le bouche-à-oreille. »",
+        "Le site aide la personne recommandée à vous vérifier.",
+        "« J’ai déjà Facebook. »",
+        "Le site centralise vos services et vos demandes sur votre domaine.",
+        "« Mon horaire est déjà plein. »",
+        "Présentez les services prioritaires et annoncez vos délais réels."
+      ],
+      "notes": "Cette slide est une série de trois objections/réponses (ne pas la présenter en colonnes sans/avec). Si plein toute l’année, le but peut être de mieux orienter et informer les clients plutôt que d’augmenter le volume. Recommander seulement ce qui sert les objectifs du garage."
+    },
+    {
+      "layout": "steps",
+      "kicker": "MISE EN ROUTE • PLAN INDICATIF",
+      "title": "30 jours pour mettre\nles bases en place.",
+      "body": [
+        "SEMAINE 1 — Clarifier services, photos, zone desservie et objectif commercial.",
+        "SEMAINES 2–3 — Construire le site mobile et tester les demandes.",
+        "SEMAINE 4 — Publier, relier la fiche Google et vérifier le suivi.",
+        "ENSUITE — Mesurer appels utiles, demandes, visites réalisées et contribution."
+      ],
+      "notes": "Échéancier indicatif à adapter à la disponibilité des contenus et aux intégrations. Comparer les résultats avant/après sur périodes comparables en tenant compte de la saison des pneus et des autres campagnes. Éviter de compter deux fois appel et formulaire d’une même personne."
+    },
+    {
+      "layout": "closing",
+      "kicker": "FAITES DE VOTRE RÉPUTATION UN POINT DE DÉPART",
+      "title": "Quand un client vous cherche,\ndonnez-lui une raison\nde vous choisir.",
+      "body": [
+        "Un site clair. Des preuves réelles. Une demande facile.",
+        "Prochaine étape : un diagnostic de votre présence web en 20 minutes.",
+        "Choisissons ensemble les trois priorités de votre garage."
+      ],
+      "notes": "Invitation commerciale sans prétendre qu’une prestation gratuite ou un prix a été autorisé. Conclusion orale : en 2026, un site utile soutient une réputation déjà construite à l’atelier et réduit les efforts nécessaires pour contacter le garage."
+    },
+    {
+      "layout": "sources",
+      "kicker": "ANNEXE • TRAÇABILITÉ DES CHIFFRES",
+      "title": "Sources canadiennes",
+      "body": [
+        "Statistique Canada — Tableau 22-10-0120-01, données 2023. Avec/sans site selon taille d’entreprise. Sans = complément calculé.",
+        "CIRA — Canadian Internet Trends 2025. Panel de 2 000 internautes canadiens adultes; préférences et confiance déclarées.",
+        "J.D. Power — Canada CSI-LT 2026, 10 septembre 2026. 10 262 propriétaires, véhicules de 4 à 12 ans."
+      ],
+      "notes": "URLs :\nhttps://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2210012001\nhttps://www.cira.ca/en/resources/news/state-of-internet/digital-dollars-national-impact-the-rise-of-canadian-e-commerce-patriotism/\nhttps://www.cira.ca/en/resources/news/state-of-internet/new-report-generative-ai-doubles-trust-social-media-plummets/\nhttps://www.jdpower.com/business/press-releases/2026-canada-customer-service-index-long-term-csi-lt-study\nConsultées le 24 septembre 2026. Aucune source ne constitue une comparaison causale de revenus entre garages avec et sans site."
+    },
+    {
+      "layout": "sources",
+      "kicker": "ANNEXE • PORTÉE ET LIMITES",
+      "title": "Sources américaines\net règles de lecture",
+      "body": [
+        "BrightLocal — Local Consumer Review Survey 2026. Panel de 1 002 adultes américains; actions déclarées après avis positifs.",
+        "CDK — Service Shopper 5.0, 2025, p. 16. 2 051 répondants; réservation par type de prestataire.",
+        "Les données américaines illustrent des usages. Elles ne sont pas des estimations québécoises.",
+        "Aucun gain de revenu garanti. Mise en situation, budget et seuil de rentabilité sont illustratifs."
+      ],
+      "notes": "URLs :\nhttps://www.brightlocal.com/research/local-consumer-review-survey/\nhttps://www.cdkglobal.com/insights/cdk-service-shopper-50-study-here\nhttps://impel.ai/wp-content/uploads/2025/11/CDK_2025-service-shopper-study.pdf\nConsultées le 24 septembre 2026. Rapports d’entreprises ayant des intérêts commerciaux. Les statistiques d’adoption, attitudes et usages sont de natures différentes et ne doivent pas être fusionnées."
+    }
+  ]
+}

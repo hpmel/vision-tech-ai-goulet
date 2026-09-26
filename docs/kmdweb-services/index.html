@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08080b">
+  <meta name="description" content="Landing page dès 499 $, site web sur mesure dès 999 $, automatisation et intelligence artificielle dès 199 $. KMD Web conçoit des expériences web premium et animées pour les entreprises québécoises.">
+  <title>Services web, sites sur mesure et IA | KMD Web</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08080b;
+      --panel: #111116;
+      --panel-2: #17171e;
+      --line: #292933;
+      --text: #f7f5fa;
+      --muted: #aaa6b5;
+      --pink: #fb1d91;
+      --cyan: #54e1e6;
+      --violet: #a58aff;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --max: 1180px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    ::selection { background: var(--pink); color: white; }
+    .skip { position: absolute; left: 12px; top: -64px; z-index: 20; padding: 12px 16px; color: #08080b; background: var(--cyan); }
+    .skip:focus { top: 12px; }
+    .shell { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgb(255 255 255 / .08); background: rgb(8 8 11 / .94); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 760; letter-spacing: .01em; }
+    .brand-mark { display: grid; place-items: center; width: 33px; height: 33px; border: 1px solid var(--pink); border-radius: 10px; color: var(--pink); font-family: var(--mono); font-size: 13px; }
+    .brand-name { font-size: 16px; }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); color: #cfccd6; font-size: 13px; }
+    .nav-links a:not(.button):hover { color: var(--cyan); }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; background: var(--pink); color: #fff; font-size: 14px; font-weight: 720; transition: transform .18s ease, background-color .18s ease, border-color .18s ease; }
+    .button:hover { transform: translateY(-2px); background: #dc147e; }
+    .button.secondary { background: transparent; border-color: #42414c; color: var(--text); }
+    .button.secondary:hover { border-color: var(--cyan); background: #111a1d; }
+    .button.small { min-height: 40px; padding-inline: 16px; font-size: 13px; }
+    .menu-toggle { display: none; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: var(--text); font: 14px var(--mono); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--cyan); font: 600 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 18px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.08; text-wrap: balance; }
+    h1 { max-width: 760px; margin: 23px 0 20px; font-size: clamp(48px, 7.4vw, 82px); font-weight: 650; letter-spacing: -.065em; }
+    h2 { margin: 14px 0 18px; font-size: clamp(34px, 5vw, 54px); font-weight: 620; letter-spacing: -.055em; }
+    h3 { font-size: 22px; font-weight: 650; letter-spacing: -.025em; }
+    .accent { color: var(--pink); }
+    .lead { max-width: 590px; color: #c3bfcb; font-size: clamp(17px, 2vw, 20px); line-height: 1.65; }
+    .muted { color: var(--muted); }
+    .hero { position: relative; z-index: 0; isolation: isolate; overflow: hidden; padding: clamp(74px, 11vw, 142px) 0 100px; }
+    .hero::after { position: absolute; z-index: -1; top: 104px; right: -145px; width: 540px; height: 540px; border: 1px solid #211629; border-radius: 50%; content: ""; box-shadow: 0 0 0 42px #0d0b12, 0 0 0 43px #211629, 0 0 0 104px #0d0b12, 0 0 0 105px #211629; opacity: .68; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); align-items: center; gap: 72px; }
+    .hero h1 { max-width: 720px; }
+    .hero .lead { margin-bottom: 30px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trustline { display: flex; align-items: center; gap: 13px; margin-top: 43px; color: var(--muted); font-size: 13px; }
+    .trustline strong { color: var(--text); font-weight: 650; }
+    .trustline .spark { color: var(--pink); font-size: 20px; }
+    .hero-art { position: relative; min-height: 340px; display: grid; place-items: center; }
+    .orb { position: absolute; width: min(28vw, 310px); aspect-ratio: 1; border: 1px solid #35303d; border-radius: 50%; }
+    .orb::before, .orb::after { position: absolute; inset: 20%; border: 1px solid #3a2639; border-radius: 50%; content: ""; }
+    .orb::after { inset: 40%; border-color: var(--pink); }
+    .orbit-label { position: absolute; right: 2%; bottom: 11%; padding: 11px 15px; border: 1px solid #38333f; border-radius: 12px; background: var(--panel); color: #e2dfe8; font: 12px var(--mono); }
+    .orbit-label b { color: var(--cyan); font-weight: 600; }
+    .hero-index { position: absolute; left: 2%; top: 12%; color: #5a5263; font: 11px var(--mono); writing-mode: vertical-rl; }
+    .proof-strip { border-block: 1px solid var(--line); background: #0d0d12; }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .proof-item { padding: 27px 24px; border-right: 1px solid var(--line); }
+    .proof-item:first-child { border-left: 1px solid var(--line); }
+    .proof-item strong { display: block; margin-bottom: 4px; color: var(--text); font: 600 17px var(--mono); }
+    .proof-item span { color: var(--muted); font-size: 13px; }
+    section { padding: 108px 0; }
+    .section-head { max-width: 700px; margin-bottom: 44px; }
+    .section-head p { max-width: 600px; margin: 0; color: var(--muted); font-size: 17px; }
+    .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 16px; }
+    .offer { position: relative; display: flex; flex-direction: column; min-height: 460px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); }
+    .offer.featured { border-color: #713252; background: #151017; }
+    .offer-label { color: var(--cyan); font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .price { margin: 23px 0 6px; font-size: 48px; font-weight: 650; letter-spacing: -.06em; }
+    .price sup { position: relative; top: -1.1em; margin-right: 5px; color: var(--pink); font: 600 14px var(--mono); letter-spacing: 0; }
+    .price-note { min-height: 44px; margin-bottom: 18px; color: var(--muted); font-size: 13px; }
+    .offer h3 { margin-bottom: 10px; }
+    .offer > p { color: #bbb7c3; font-size: 14px; }
+    .offer ul { display: grid; gap: 12px; margin: 12px 0 26px; padding: 0; list-style: none; color: #ddd9e3; font-size: 14px; }
+    .offer li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+    .offer li::before { content: "+"; color: var(--pink); font: 700 14px var(--mono); }
+    .offer .button { width: 100%; margin-top: auto; }
+    .fineprint { margin: 20px 0 0; color: #8e8997; font-size: 12px; }
+    .add-on { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-top: 20px; padding: 22px 26px; border: 1px solid var(--line); border-radius: 14px; background: #0d0d12; }
+    .add-on strong { display: block; margin-bottom: 4px; font-size: 15px; }
+    .add-on p { margin: 0; color: var(--muted); font-size: 13px; }
+    .add-on-price { flex: 0 0 auto; color: var(--cyan); font: 600 16px var(--mono); }
+    .experience { border-block: 1px solid var(--line); background: #0d0d12; }
+    .experience-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 70px; }
+    .experience h2 { max-width: 440px; }
+    .experience-copy p { max-width: 520px; color: #bbb7c3; }
+    .feature-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 27px; }
+    .feature { padding: 17px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+    .feature strong { display: block; margin-bottom: 5px; font-size: 14px; }
+    .feature span { color: var(--muted); font-size: 12px; }
+    .ai-band { position: relative; overflow: hidden; padding: 74px; border: 1px solid #4c2945; border-radius: 18px; background: #130d15; }
+    .ai-band::after { position: absolute; right: -54px; bottom: -150px; width: 330px; height: 330px; border: 1px solid #572044; border-radius: 50%; content: ""; box-shadow: 0 0 0 38px #190f19, 0 0 0 39px #572044, 0 0 0 82px #190f19, 0 0 0 83px #572044; opacity: .6; }
+    .ai-band > * { position: relative; z-index: 1; }
+    .ai-layout { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 42px; }
+    .ai-band h2 { max-width: 660px; }
+    .ai-band p { max-width: 650px; color: #c5bdca; }
+    .ai-price { padding: 15px 18px; border: 1px solid #713252; border-radius: 12px; color: var(--text); font: 600 14px var(--mono); white-space: nowrap; }
+    .ai-price b { color: var(--pink); font-size: 19px; }
+    .ai-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .ai-tags span { padding: 8px 12px; border: 1px solid #493848; border-radius: 999px; color: #dfd5e2; font: 11px var(--mono); }
+    .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-block: 1px solid var(--line); }
+    .step { min-height: 200px; padding: 24px; border-right: 1px solid var(--line); }
+    .step:first-child { border-left: 1px solid var(--line); }
+    .step-no { display: block; margin-bottom: 28px; color: var(--pink); font: 12px var(--mono); }
+    .step h3 { margin-bottom: 8px; font-size: 19px; }
+    .step p { margin: 0; color: var(--muted); font-size: 13px; }
+    .portfolio { border-block: 1px solid var(--line); background: #0d0d12; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .project { position: relative; display: flex; min-height: 158px; flex-direction: column; justify-content: space-between; padding: 22px; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); transition: border-color .2s ease, transform .2s ease; }
+    .project:hover { transform: translateY(-3px); border-color: #81436e; }
+    .project::after { position: absolute; right: -28px; bottom: -48px; width: 118px; height: 118px; border: 1px solid #322238; border-radius: 50%; content: ""; }
+    .project-type { color: var(--cyan); font: 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .project strong { position: relative; z-index: 1; max-width: 240px; font-size: 20px; font-weight: 620; }
+    .project span:last-child { position: relative; z-index: 1; margin-top: 7px; color: var(--muted); font-size: 12px; }
+    .project .visit { position: absolute; right: 18px; top: 16px; color: var(--pink); font-size: 18px; }
+    .about-grid { display: grid; grid-template-columns: .72fr 1.28fr; align-items: start; gap: 80px; }
+    .about-stamp { display: grid; place-items: center; width: min(100%, 280px); aspect-ratio: 1; border: 1px solid #58304b; border-radius: 50%; color: var(--pink); font: 600 17px var(--mono); text-align: center; }
+    .about-stamp span { display: block; color: var(--muted); font-size: 11px; font-weight: 400; }
+    .about-copy p { max-width: 650px; color: #bbb7c3; }
+    .about-name { display: flex; align-items: center; gap: 12px; margin-top: 24px; color: var(--text); font-size: 14px; font-weight: 650; }
+    .about-name::before { width: 27px; height: 1px; background: var(--pink); content: ""; }
+    .faq-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 72px; }
+    .faq-wrap .section-head { margin: 0; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0; cursor: pointer; font-size: 15px; font-weight: 620; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { color: var(--pink); content: "+"; font: 19px var(--mono); }
+    details[open] summary::after { content: "−"; }
+    details p { max-width: 650px; margin: -3px 35px 20px 0; color: var(--muted); font-size: 14px; }
+    .final-cta { padding: 0 0 96px; }
+    .final-box { display: flex; align-items: center; justify-content: space-between; gap: 36px; padding: clamp(32px, 6vw, 68px); border: 1px solid #563047; border-radius: 18px; background: #130d15; }
+    .final-box h2 { max-width: 700px; margin-bottom: 12px; }
+    .final-box p { margin-bottom: 0; color: var(--muted); }
+    footer { padding: 27px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-row a:hover { color: var(--cyan); }
+    .fine-footer { max-width: var(--max); margin: 14px auto 0; color: #807b88; font-size: 11px; }
+    .reveal { opacity: 1; transform: none; }
+    .motion-ready .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+    .motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 880px) {
+      .hero-grid, .experience-grid, .about-grid, .faq-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .hero-art { position: absolute; top: 120px; right: 8%; width: 28vw; min-height: 230px; opacity: .45; pointer-events: none; }
+      .hero-grid > div:first-child { position: relative; z-index: 1; }
+      .offer-grid { grid-template-columns: 1fr 1fr; }
+      .offer:last-child { grid-column: 1 / -1; min-height: 390px; }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-stamp { width: 190px; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 36px, var(--max)); }
+      .nav { min-height: 66px; }
+      .menu-toggle { display: inline-grid; place-items: center; }
+      .nav-links { position: absolute; top: 66px; left: 0; right: 0; display: none; align-items: stretch; gap: 0; padding: 12px 18px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a:not(.button) { padding: 12px 5px; }
+      .nav-links .button { margin-top: 8px; }
+      .hero { padding: 78px 0 68px; }
+      .hero h1 { max-width: 580px; font-size: clamp(45px, 12vw, 62px); }
+      .hero-art { top: 100px; right: -3%; width: 36vw; min-height: 180px; }
+      .hero::after { top: 170px; right: -235px; }
+      .trustline { margin-top: 32px; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .proof-item, .proof-item:first-child { padding: 17px 5px; border: 0; border-bottom: 1px solid var(--line); }
+      .proof-item:last-child { border-bottom: 0; }
+      section { padding: 76px 0; }
+      .section-head { margin-bottom: 30px; }
+      .offer-grid { grid-template-columns: 1fr; }
+      .offer, .offer:last-child { grid-column: auto; min-height: 0; padding: 24px; }
+      .price-note { min-height: 0; }
+      .offer .button { margin-top: 10px; }
+      .add-on { align-items: flex-start; flex-direction: column; padding: 20px; }
+      .feature-list { grid-template-columns: 1fr; }
+      .ai-band { padding: 30px 23px; }
+      .ai-layout { grid-template-columns: 1fr; gap: 22px; }
+      .ai-price { justify-self: start; }
+      .process { grid-template-columns: 1fr 1fr; }
+      .step { min-height: 176px; padding: 18px 14px; border-bottom: 1px solid var(--line); }
+      .step:nth-child(odd) { border-left: 1px solid var(--line); }
+      .step:nth-last-child(-n+2) { border-bottom: 0; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project { min-height: 130px; }
+      .about-grid { gap: 28px; }
+      .about-stamp { width: 150px; }
+      .faq-wrap { gap: 28px; }
+      .final-cta { padding-bottom: 70px; }
+      .final-box { align-items: flex-start; flex-direction: column; padding: 30px 23px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .motion-ready .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="topbar">
+    <nav class="nav shell" aria-label="Navigation principale">
+      <a class="brand" href="#top" aria-label="KMD Web, accueil"><span class="brand-mark">K</span><span class="brand-name">KMD WEB</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Ouvrir le menu">MENU</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#offres">Services</a><a href="#methode">Méthode</a><a href="#realisations">Réalisations</a>
+        <a class="button small" href="https://kmdweb.ca/diagnostic">Parler de mon projet <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid shell">
+        <div class="reveal">
+          <span class="eyebrow">Sites web · applications · automatisation IA</span>
+          <h1>Un site qui fait plus que <span class="accent">bien paraître.</span></h1>
+          <p class="lead">Une présence web haut de gamme, un parcours qui guide vos visiteurs et des outils intelligents qui font avancer votre entreprise.</p>
+          <div class="actions"><a class="button" href="#offres">Trouver la bonne formule <span aria-hidden="true">↓</span></a><a class="button secondary" href="#realisations">Voir les projets</a></div>
+          <div class="trustline"><span class="spark" aria-hidden="true">✳</span><span><strong>Une seule partenaire</strong> de la stratégie à la mise en ligne</span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="hero-index">CONCEPTION · CODE · STRATÉGIE</span><div class="orb"></div><span class="orbit-label"><b>WEB</b> + IA · SUR MESURE</span></div>
+      </div>
+    </section>
+
+    <div class="proof-strip" aria-label="KMD Web en bref"><div class="proof-grid shell"><div class="proof-item"><strong>8+ ans</strong><span>à transformer des idées en solutions web</span></div><div class="proof-item"><strong>Sur mesure</strong><span>une conception alignée sur votre marque</span></div><div class="proof-item"><strong>De bout en bout</strong><span>une seule interlocutrice, du plan au lancement</span></div></div></div>
+
+    <section id="offres">
+      <div class="shell">
+        <div class="section-head reveal"><span class="eyebrow">Choisissez votre point de départ</span><h2>La bonne solution pour <span class="accent">votre prochaine étape.</span></h2><p>Des tarifs de départ clairement affichés. On confirme ensemble le contenu, les fonctionnalités et le prix final avant de commencer.</p></div>
+        <div class="offer-grid">
+          <article class="offer reveal">
+            <span class="offer-label">Présence ciblée</span><div class="price"><sup>DÈS</sup>499 $</div><div class="price-note">Landing page · environ 3 à 4 sections</div>
+            <h3>Landing page</h3><p>Une page stratégique pour présenter votre offre et aider vos visiteurs à passer à l’action.</p>
+            <ul><li>Design adapté à votre marque</li><li>Structure responsive pour mobile et ordinateur</li><li>Appels à l’action et coordonnées bien visibles</li><li>Animations choisies pour mettre l’essentiel en valeur</li></ul>
+            <a class="button secondary" href="https://kmdweb.ca/diagnostic">Discuter d’une landing page <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="offer featured reveal">
+            <span class="offer-label">Expérience complète</span><div class="price"><sup>DÈS</sup>999 $</div><div class="price-note">Site multipage · conception personnalisée</div>
+            <h3>Site web complet</h3><p>Une expérience web distinctive, conçue autour de votre entreprise, vos clients et vos objectifs.</p>
+            <ul><li>Plusieurs pages personnalisées</li><li>Personnalisation complète selon votre identité</li><li>Formulaire de contact complet</li><li>Animations et interactions personnalisées sur l’ensemble du parcours</li><li>Navigation claire et finitions de qualité premium</li></ul>
+            <a class="button" href="https://kmdweb.ca/diagnostic">Parler de mon site <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="offer reveal">
+            <span class="offer-label">Temps récupéré</span><div class="price"><sup>DÈS</sup>199 $</div><div class="price-note">Automatisation et IA · selon la portée</div>
+            <h3>IA & automatisation</h3><p>Des assistants et des flux conçus autour des tâches qui ralentissent votre équipe.</p>
+            <ul><li>Chatbots pour les questions fréquentes</li><li>Assistants vocaux IA</li><li>Automatisations qui exécutent des tâches</li><li>Connexion possible à vos outils existants</li></ul>
+            <a class="button secondary" href="https://kmdweb.ca/diagnostic">Explorer l’IA pour mon entreprise <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="add-on reveal"><div><strong>Ajoutez une section à votre landing page</strong><p>Un bloc de contenu additionnel, avec un tarif ajusté selon sa longueur et sa complexité.</p></div><div class="add-on-price">99 $ à 199 $ / section</div></div>
+        <p class="fineprint">Montants de départ en dollars canadiens. Le devis précise le périmètre, les livrables, les frais récurrents applicables et les taxes.</p>
+      </div>
+    </section>
+
+    <section class="experience" aria-labelledby="experience-title">
+      <div class="experience-grid shell">
+        <div class="reveal"><h2 id="experience-title">Du premier regard au dernier détail.</h2></div>
+        <div class="experience-copy reveal"><p>Chaque écran est pensé pour présenter votre valeur avec clarté. La direction visuelle, le mouvement et les interactions forment une expérience cohérente, fidèle à votre marque.</p><div class="feature-list"><div class="feature"><strong>Design personnalisé</strong><span>Une direction visuelle créée pour votre entreprise.</span></div><div class="feature"><strong>Animations soignées</strong><span>Du rythme et de la fluidité qui mettent le contenu en valeur.</span></div><div class="feature"><strong>Mobile d’abord</strong><span>Une expérience claire sur téléphone, tablette et ordinateur.</span></div><div class="feature"><strong>Parcours réfléchi</strong><span>Des contenus et des appels à l’action faciles à suivre.</span></div></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="ai-title"><div class="shell"><div class="ai-band reveal"><div class="ai-layout"><div><h2 id="ai-title">Faites circuler le travail, même quand vous êtes ailleurs.</h2><p>Du premier message à la tâche terminée, on conçoit des automatisations et des assistants IA qui s’intègrent à votre façon de travailler.</p></div><div class="ai-price">Projets IA <b>dès 199 $</b></div></div><div class="ai-tags" aria-label="Exemples de solutions"><span>CHATBOTS</span><span>ASSISTANTS VOCAUX</span><span>GESTION DE DEMANDES</span><span>TÂCHES AUTOMATISÉES</span></div></div></div></section>
+
+    <section id="methode"><div class="shell"><div class="section-head reveal"><h2>On avance avec <span class="accent">clarté.</span></h2><p>Vous savez où le projet s’en va, ce qui est inclus et quelle est la prochaine étape.</p></div><div class="process"><article class="step reveal"><span class="step-no">01 / ÉCOUTER</span><h3>Diagnostic</h3><p>On clarifie votre besoin, vos clients et le résultat attendu.</p></article><article class="step reveal"><span class="step-no">02 / IMAGINER</span><h3>Prototype</h3><p>Vous voyez la direction visuelle et le fonctionnement proposés.</p></article><article class="step reveal"><span class="step-no">03 / CONSTRUIRE</span><h3>Développement</h3><p>On conçoit, intègre et ajuste la solution avec vous.</p></article><article class="step reveal"><span class="step-no">04 / LANCER</span><h3>Mise en ligne</h3><p>On prépare le lancement et vous guide dans la prise en main.</p></article></div></div></section>
+
+    <section class="portfolio" id="realisations"><div class="shell"><div class="section-head reveal"><span class="eyebrow">Conçu par KMD Web</span><h2>Des projets différents.<br><span class="accent">La même attention au détail.</span></h2><p>Quelques réalisations en ligne. Ouvrez un projet pour découvrir son univers.</p></div><div class="project-grid">
+      <a class="project reveal" href="https://www.airpurbelzile.ca/" target="_blank" rel="noopener noreferrer"><span class="project-type">Maison · qualité de l’air</span><strong>Air Pur Belzile</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+      <a class="project reveal" href="https://nexiorconstruction.com/fr/" target="_blank" rel="noopener noreferrer"><span class="project-type">Construction · résidentiel & commercial</span><strong>Nexior Construction</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+      <a class="project reveal" href="https://htremblay.ca/" target="_blank" rel="noopener noreferrer"><span class="project-type">Construction · rénovation</span><strong>Habitations Tremblay & Tremblay</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+      <a class="project reveal" href="https://chantalcharette.com/" target="_blank" rel="noopener noreferrer"><span class="project-type">Arts · école de danse</span><strong>École de danse Chantal Charette</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+      <a class="project reveal" href="https://www.fleurmidable.com/" target="_blank" rel="noopener noreferrer"><span class="project-type">Paysagement · services locaux</span><strong>Fleurmidable</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+      <a class="project reveal" href="https://shinebreath.com/" target="_blank" rel="noopener noreferrer"><span class="project-type">Bien-être · marque</span><strong>Shinebreath</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+      <a class="project reveal" href="https://kmdweb.ca/" target="_blank" rel="noopener noreferrer"><span class="project-type">Studio numérique · site KMD Web</span><strong>KMD Web</strong><span>Voir le site <span aria-hidden="true">↗</span></span><b class="visit" aria-hidden="true">↗</b></a>
+    </div></div></section>
+
+    <section aria-labelledby="about-title"><div class="about-grid shell"><div class="about-stamp reveal">KMD WEB<span>CONCEPTION · CODE · STRATÉGIE</span></div><div class="about-copy reveal"><h2 id="about-title">Du travail soigné.<br><span class="accent">Une relation simple.</span></h2><p>Je suis Mélanie Desrochers, fondatrice de KMD Web. Depuis plus de huit ans, j’aide les entreprises à transformer leurs idées en sites, applications et systèmes numériques concrets.</p><p>Je prends le temps de comprendre votre réalité, de proposer les bons outils et de créer une solution dont vous pouvez être fière.</p><div class="about-name">Mélanie Desrochers <span class="muted">· fondatrice</span></div></div></div></section>
+
+    <section aria-labelledby="faq-title"><div class="faq-wrap shell"><div class="section-head reveal"><h2 id="faq-title">Les réponses, <span class="accent">sans détour.</span></h2><p>Chaque mandat est cadré ensemble afin que le prix reflète le travail réel.</p></div><div class="faq-list reveal">
+      <details><summary>Qu’est-ce qui est inclus dans le prix de départ ?</summary><p>Le prix de départ couvre le périmètre de base décrit dans la formule. Le devis confirme le nombre de pages ou de sections, les fonctionnalités, les contenus attendus et les frais récurrents applicables.</p></details>
+      <details><summary>Combien coûte une section supplémentaire ?</summary><p>Une section additionnelle coûte de 99 $ à 199 $, selon sa longueur, son contenu et ses fonctionnalités. Le prix est confirmé avant la réalisation.</p></details>
+      <details><summary>Les animations sont-elles incluses ?</summary><p>Des animations et interactions adaptées au design font partie de l’approche KMD Web. Le type et l’ampleur du mouvement sont déterminés selon le projet et son objectif.</p></details>
+      <details><summary>Que peut faire l’intelligence artificielle pour mon entreprise ?</summary><p>Selon votre besoin, elle peut répondre à des questions fréquentes, assister les visiteurs, organiser des demandes ou prendre en charge des tâches répétitives. On choisit la bonne solution après avoir clarifié le processus.</p></details>
+      <details><summary>Comment démarrer ?</summary><p>Réservez un diagnostic avec KMD Web. On discute de votre objectif, on identifie le meilleur point de départ et on précise la portée avant de vous remettre une proposition.</p></details>
+    </div></div></section>
+
+    <section class="final-cta"><div class="final-box shell reveal"><div><h2>Prête à passer de l’idée à <span class="accent">l’expérience en ligne ?</span></h2><p>Parlons de ce que votre entreprise veut accomplir.</p></div><a class="button" href="https://kmdweb.ca/diagnostic">Réserver un diagnostic <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer><div class="footer-row shell"><a class="brand" href="#top"><span class="brand-mark">K</span><span class="brand-name">KMD WEB</span></a><span>Sites Web · Applications · Automatisation IA</span><a href="https://kmdweb.ca/">kmdweb.ca <span aria-hidden="true">↗</span></a></div><p class="fine-footer shell">Prix de départ en dollars canadiens. Le devis précise le périmètre des services, les frais récurrents applicables et les taxes. © <span id="year">2026</span> KMD Web.</p></footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('#nav-links');
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      menuButton.setAttribute('aria-label', expanded ? 'Ouvrir le menu' : 'Fermer le menu');
+      menu.classList.toggle('open', !expanded);
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Ouvrir le menu');
+    }));
+    document.querySelector('#year').textContent = new Date().getFullYear();
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion-ready');
+      const observer = new IntersectionObserver((entries, instance) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            instance.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    }
+  </script>
+</body>
+</html>

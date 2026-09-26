@@ -1,0 +1,6 @@
+[submodule "upstream/vision-tech-ai-site"]
+	path = upstream/vision-tech-ai-site
+	url = https://github.com/hpmel/vision-tech-ai-site.git
+[submodule "upstream/vision-tech-ai"]
+	path = upstream/vision-tech-ai
+	url = https://github.com/hpmel/vision-tech-ai.git

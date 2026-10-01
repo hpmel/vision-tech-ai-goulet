@@ -16,3 +16,6 @@
 .goulet-site .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(42px,5.8vw,82px);line-height:.98;letter-spacing:-1.2px}
 .goulet-site .form-grid label{min-width:0}
 .goulet-site .form-grid select{min-width:0;max-width:100%}
+.goulet-site .demo-honeypot{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.goulet-site fieldset.demo-form-fields{margin:0;padding:0;border:0;min-width:0}
+.goulet-site .form-submit:disabled{opacity:.65;cursor:wait}

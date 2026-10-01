@@ -14,3 +14,5 @@
 /* Vision-Tech AI title treatment: compact, high-impact Barlow Condensed capitals. */
 .goulet-site{--display:'Barlow Condensed','Arial Narrow',Arial,sans-serif}
 .goulet-site .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(42px,5.8vw,82px);line-height:.98;letter-spacing:-1.2px}
+.goulet-site .form-grid label{min-width:0}
+.goulet-site .form-grid select{min-width:0;max-width:100%}

@@ -1,10 +1,9 @@
 import { useState, type FormEvent, type ReactElement } from 'react';
 import { ArrowUpRight, Check, Mail, RotateCcw } from 'lucide-react';
 import { createGouletEmail, type GouletInquiry } from '../services/gouletInquiry';
+import { VehicleFields } from '../components/VehicleFields';
 
-const makes: string[] = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler', 'Dodge', 'Fiat', 'Ford', 'Genesis', 'GMC', 'Honda', 'Hyundai', 'Infiniti', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln', 'Mazda', 'Mercedes-Benz', 'Mini', 'Mitsubishi', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian', 'Subaru', 'Suzuki', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo', 'Autre'];
 const services: string[] = ['Pneus neufs', 'Pneus usagés', 'Pose de pneus', 'Entreposage', 'Jantes et mags', 'Autre demande'];
-const years: number[] = Array.from({ length: new Date().getFullYear() - 1978 }, (_: unknown, index: number): number => new Date().getFullYear() + 1 - index);
 
 export const InquiryForm = (): ReactElement => {
   const [emailLink, setEmailLink] = useState<string>('');
@@ -21,12 +20,7 @@ export const InquiryForm = (): ReactElement => {
     <h3>Parlons pneus.</h3>
     <p>Un prix, une dimension, une question ? Donnez-nous les détails.</p>
     <form onSubmit={prepare} onChange={(): void => { if (emailLink) setEmailLink(''); }}>
-      <fieldset><legend>Votre véhicule</legend><div className="form-grid">
-        <label>Marque *<select name="make" required defaultValue=""><option value="" disabled>Choisir une marque</option>{makes.map((make: string) => <option key={make}>{make}</option>)}</select></label>
-        <label>Année *<select name="year" required defaultValue=""><option value="" disabled>Choisir une année</option>{years.map((year: number) => <option key={year}>{year}</option>)}</select></label>
-        <label>Modèle *<input name="model" placeholder="Ex. Civic, F-150, RAV4" required maxLength={80}/></label>
-        <label>Version / finition<input name="trim" placeholder="Ex. Sport, LX, XLT" maxLength={80}/></label>
-      </div></fieldset>
+      <VehicleFields/>
       <fieldset><legend>Ce qu’on peut faire pour vous</legend><div className="form-grid">
         <label>Service *<select name="service" required value={service} onChange={(event): void => setService(event.target.value)}><option value="" disabled>Choisir un service</option>{services.map((item: string) => <option key={item}>{item}</option>)}</select></label>
         <label>Dimension des pneus<input name="size" placeholder="Ex. 205/55 R16" maxLength={40}/></label>

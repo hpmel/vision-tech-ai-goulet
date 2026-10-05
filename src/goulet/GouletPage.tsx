@@ -1,5 +1,31 @@
 import { useEffect, useRef, useState, type ReactElement } from 'react';
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, MapPin, Menu, Moon, Pause, Phone, Play, Star, Sun, X } from 'lucide-react';
+import {
+  AlertCircle,
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  ChevronDown,
+  Clock3,
+  Disc,
+  Flame,
+  KeyRound,
+  MapPin,
+  Menu,
+  Moon,
+  Package,
+  Pause,
+  Phone,
+  Play,
+  Shield,
+  Sparkles,
+  Star,
+  Sun,
+  Truck,
+  Wind,
+  Wrench,
+  X
+} from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { InquiryForm } from './InquiryForm';
@@ -67,20 +93,162 @@ export const GouletPage = (): ReactElement => {
   return <div ref={page} className="goulet-site" data-theme={theme}>
     <a href="#main" className="skip-link">Aller au contenu</a>
     <div className="announcement"><span>PNEUS NEUFS & USAGÉS</span><span>SANS RENDEZ-VOUS <span aria-hidden="true">✦</span> SHERBROOKE</span><a href={maps} target="_blank" rel="noreferrer">7600, boul. Bourque <ArrowUpRight size={12}/></a></div>
-    <header className="goulet-header"><a className="brand" href="#accueil" aria-label="Pneus Goulet, accueil"><img src="/goulet/logo.webp" alt="Pneus Goulet" width="176" height="64"/></a>
-      <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Navigation principale" id="main-nav"><a href="#services" onClick={(): void => setMenuOpen(false)}>Nos services</a><a href="#a-propos" onClick={(): void => setMenuOpen(false)}>L’esprit Goulet</a><a href="#contact" onClick={(): void => setMenuOpen(false)}>Nous trouver</a></nav>
+    <header className="goulet-header"><a className="brand" href="#accueil" aria-label="Pneus Goulet, accueil"><img src="/goulet/logo.webp" alt="Pneus Goulet" width="220" height="110"/></a>
+      <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Navigation principale" id="main-nav"><a href="#services" onClick={(): void => setMenuOpen(false)}>Services réguliers</a><a href="#nouveautes" onClick={(): void => setMenuOpen(false)}>Nouveaux services</a><a href="#a-propos" onClick={(): void => setMenuOpen(false)}>L’esprit Goulet</a><a href="#contact" onClick={(): void => setMenuOpen(false)}>Nous trouver</a></nav>
       <div className="header-actions"><button className="theme-toggle" aria-label={theme === 'light' ? 'Activer le thème sombre' : 'Activer le thème clair'} onClick={(): void => setTheme(theme === 'light' ? 'dark' : 'light')}>{theme === 'light' ? <Moon size={18}/> : <Sun size={18}/>}</button><a href="tel:+18195640019" className="header-phone" aria-label="Appeler le 819 564-0019"><Phone size={16}/><span>819 564-0019</span></a><a className="button button-red header-cta" href="#demande">Une question ? <ArrowUpRight size={17}/></a><button className="menu-toggle" aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOpen} aria-controls="main-nav" onClick={(): void => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button></div>
     </header>
     <main id="main">
       <section className="hero" id="accueil" aria-labelledby="hero-title"><HeroVideo/><div className="hero-shade"/><div className="hero-inner"><div className="hero-copy"><p className="eyebrow"><span/> VOTRE ARRÊT PNEUS À SHERBROOKE</p><h1 id="hero-title">DU CARACTÈRE.<br/><span>DE LA TRACTION.</span></h1><p className="hero-intro">Des pneus neufs ou usagés. Du bon monde au comptoir.<br className="desktop-break"/> Et vous, de retour sur la route.</p><div className="hero-actions"><a href="#demande" className="button button-red">Trouver mes pneus <ArrowUpRight size={20}/></a><a href="tel:+18195640019" className="hero-call"><Phone size={17}/> On s’appelle ?</a></div></div><div className="hero-stamp"><span>PASSEZ NOUS VOIR</span><strong>SANS<br/>RENDEZ-VOUS</strong><span>ON S’OCCUPE DE VOS PNEUS</span><Star size={18} fill="currentColor"/></div></div><a href="#services" className="discover"><ArrowDown size={16}/> Faites un tour</a></section>
       <div className="checkered" aria-hidden="true"/>
       <section className="quick-facts" aria-label="Informations pratiques"><a href={google} target="_blank" rel="noreferrer"><strong>4,3<span>/5</span></strong><div><span className="stars" aria-label="Note Google de 4,3 sur 5">★★★★<span>★</span></span><span>275 avis sur Google <ArrowUpRight size={13}/></span></div></a><div><Clock3 size={25}/><p><strong>On vous accueille</strong><span>Lun. au ven. : 8 h à 12 h / 13 h à 16 h</span></p></div><a href={maps} target="_blank" rel="noreferrer"><MapPin size={25}/><p><strong>Au 7600, boul. Bourque</strong><span>Sherbrooke, c’est par ici <ArrowUpRight size={13}/></span></p></a></section>
-      <section className="services-section section-wrap" id="services"><div className="section-heading reveal"><p className="eyebrow">ÇA ROULE AVEC GOULET</p><h2>À chaque saison,<br/>son bon pneu.</h2><p>De la première neige aux longues routes d’été, on s’occupe de ce qui vous relie à la route.</p></div><div className="services-grid">{services.map((service: Service) => <article key={service.title} className={`service-card reveal ${service.className}`}><img src={`/goulet/${service.image}`} alt={service.subtitle === 'POSE DE PNEUS' ? 'Des mains gantées tiennent un pneu' : service.subtitle === 'ENTREPOSAGE SAISONNIER' ? 'Pneus rangés en atelier' : 'Sélection de pneus aux différentes sculptures'} loading="lazy" width="720" height="850"/><div className="service-content"><span>{service.subtitle}</span><h3>{service.title}</h3><p>{service.description}</p><a href="#demande">Parlons-en <ArrowUpRight size={20}/></a></div></article>)}</div><div className="extras reveal"><div><strong>Et pour compléter le tout ?</strong><span>Vente et pose de jantes / mags. Essuie-glaces.</span></div><a href="#demande">Demandez à l’équipe <ArrowRight size={20}/></a></div></section>
+      <section className="services-section section-wrap" id="services">
+        <div className="section-heading reveal">
+          <p className="eyebrow"><Wrench size={15}/> EXPERTISE DE L'ATELIER</p>
+          <h2>SERVICES RÉGULIERS</h2>
+          <p>Du choix de vos pneus à leur installation rapide sans rendez-vous, nous assurons votre sécurité et votre confort sur la route toute l'année.</p>
+        </div>
+        <div className="regular-services-bar reveal">
+          <div className="regular-service-item">
+            <span className="service-tag"><Disc size={15}/> 01 · PNEUS</span>
+            <h3>Vente & pose de pneus neufs et usagés</h3>
+            <p>Vaste inventaire de pneus inspectés pour tous les budgets. Pose sans rendez-vous réalisée par nos experts.</p>
+          </div>
+          <div className="regular-service-item">
+            <span className="service-tag"><Package size={15}/> 02 · ENTREPOSAGE</span>
+            <h3>Entreposage saisonnier</h3>
+            <p>Espace tempéré, propre et hautement sécurisé pour conserver vos pneus d’été ou d’hiver dans des conditions optimales.</p>
+          </div>
+          <div className="regular-service-item">
+            <span className="service-tag"><Disc size={15}/> 03 · ROUES & JANTES</span>
+            <h3>Vente et pose de rim (mag)</h3>
+            <p>Jantes d'acier durables et mags élégants pour tous types de véhicules, montés et équilibrés avec précision.</p>
+          </div>
+          <div className="regular-service-item">
+            <span className="service-tag"><Wind size={15}/> 04 · VISIBILITÉ</span>
+            <h3>Vente d'essuie-glace</h3>
+            <p>Balais d'essuie-glaces robustes toutes saisons assurant une vision parfaite sous la pluie, le verglas ou la neige.</p>
+          </div>
+        </div>
+        <div className="services-grid">
+          {services.map((service: Service) => <article key={service.title} className={`service-card reveal ${service.className}`}><img src={`/goulet/${service.image}`} alt={service.subtitle === 'POSE DE PNEUS' ? 'Des mains gantées tiennent un pneu' : service.subtitle === 'ENTREPOSAGE SAISONNIER' ? 'Pneus rangés en atelier' : 'Sélection de pneus aux différentes sculptures'} loading="lazy" width="720" height="850"/><div className="service-content"><span>{service.subtitle}</span><h3>{service.title}</h3><p>{service.description}</p><a href="#demande">Parlons-en <ArrowUpRight size={20}/></a></div></article>)}
+        </div>
+        <div className="tire-worn-banner reveal">
+          <div className="tire-worn-stamp">
+            <AlertCircle size={30}/>
+            <strong>INSPECTION ATELIER</strong>
+            <span>PNEUS GOULET</span>
+          </div>
+          <div className="tire-worn-content">
+            <span className="tire-worn-kicker">PRÉVENTION & SÉCURITÉ ROUTIÈRE</span>
+            <h3>Pneus usés ?</h3>
+            <p className="tire-worn-highlight">
+              Chez Pneus Goulet, nous avons <strong>toutes les grandes marques disponible sur demande</strong>.
+            </p>
+            <p className="tire-worn-desc">
+              Ne laissez pas des semelles usées compromettre votre adhérence. Venez faire vérifier vos pneus au garage sans rendez-vous, ou demandez votre soumission pour vos dimensions spécifiques.
+            </p>
+            <div className="tire-worn-actions">
+              <a href="#demande" className="button button-red">Trouver mes pneus <ArrowUpRight size={18}/></a>
+              <a href="tel:+18195640019" className="hero-call"><Phone size={16}/> 819 564-0019</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="new-services-section section-wrap" id="nouveautes">
+        <div className="new-services-header reveal">
+          <div className="new-badge">
+            <Sparkles size={15}/>
+            <span>NOUVEAUTÉ EN ATELIER</span>
+          </div>
+          <h2>NOUVEAUX SERVICES</h2>
+          <p className="new-services-subtitle">
+            VENTE, RÉPARATION ET INSTALLATION de :
+          </p>
+          <p className="new-services-intro">
+            Pneus Goulet prend maintenant soin de votre véhicule au complet. Bénéficiez d’un équipement certifié, installé avec minutie et garanti pour rouler en toute saison.
+          </p>
+        </div>
+        <div className="new-services-grid">
+          <article className="new-service-card reveal">
+            <div className="new-card-icon"><KeyRound size={26}/></div>
+            <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
+            <h3>Démarreur à distance</h3>
+            <p>Affrontez l’hiver québécois au chaud. Systèmes fiables à longue portée avec télécommandes bidirectionnelles ou contrôle intelligent sur téléphone, adaptés à votre véhicule.</p>
+            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
+          </article>
+          <article className="new-service-card reveal">
+            <div className="new-card-icon"><Shield size={26}/></div>
+            <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
+            <h3>Pare-brise</h3>
+            <p>Réparation rapide d'impacts pour stopper la fissure et remplacement certifié avec vitres d'origine respectant les normes de sécurité les plus strictes.</p>
+            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
+          </article>
+          <article className="new-service-card reveal">
+            <div className="new-card-icon"><Flame size={26}/></div>
+            <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
+            <h3>Sièges chauffants</h3>
+            <p>Chaleur et confort instantanés. Installation soignée et invisible d'éléments chauffants intégrés directement sous le recouvrement d’origine de vos sièges.</p>
+            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
+          </article>
+          <article className="new-service-card reveal">
+            <div className="new-card-icon"><Truck size={26}/></div>
+            <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
+            <h3>Attache-remorques</h3>
+            <p>Vente et pose d'attelages de remorquage robustes, boîtiers électroniques et filage électrique sécuritaire pour vos remorques, roulottes, bateaux ou porte-vélos.</p>
+            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
+          </article>
+          <article className="new-service-card new-service-card-wide reveal">
+            <div className="new-card-icon"><Wrench size={26}/></div>
+            <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
+            <h3>Accessoires d'autos et camions</h3>
+            <p>Équipez et personnalisez votre véhicule pour le travail ou l'aventure : marchepieds, boîtes de camion (tonneau covers), déflecteurs, tapis weatherguard et accessoires sur mesure.</p>
+            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
+          </article>
+        </div>
+        <div className="new-services-footer-banner reveal">
+          <div className="new-banner-text">
+            <strong>Vous souhaitez équiper ou réparer votre véhicule ?</strong>
+            <span>Passez nous voir au garage au 7600, boul. Bourque ou demandez votre soumission directement en ligne.</span>
+          </div>
+          <a href="#demande" className="button button-red">
+            Obtenir une soumission <ArrowRight size={18}/>
+          </a>
+        </div>
+      </section>
       <section className="about-section section-wrap" id="a-propos"><div className="mascot-scene reveal"><div className="mascot-circle"/><div className="mascot-caption">La bonne humeur<br/>fait du chemin.</div><img className="mascot-art" src="/goulet/mascotte.webp" alt="La mascotte souriante de Pneus Goulet et ses jantes" loading="lazy" width="897" height="967"/><span className="scene-sign">100 % GOULET</span></div><div className="about-copy reveal"><h2>Les pneus,<br/>c’est notre <br/><span>genre de trip.</span></h2><p>Chez Pneus Goulet, on aime les choses simples : vous accueillir, parler de vos besoins et vous aider à trouver les bons pneus.</p><p>Neufs ou usagés, pour le quotidien ou les changements de saison : passez nous voir au 7600, boulevard Bourque. Notre sourire vient avec le service.</p><div className="about-values"><span><Check size={18}/> Pneus neufs et usagés</span><span><Check size={18}/> Pose sans rendez-vous</span><span><Check size={18}/> Grandes marques sur demande</span></div><a className="text-link" href="https://www.facebook.com/PneusGoulet" target="_blank" rel="noreferrer">Retrouvez l’équipe sur Facebook <ArrowUpRight size={18}/></a></div></section>
       <section className="reputation section-wrap reveal"><div className="review-score"><span className="google-label">LES AVIS GOOGLE</span><strong>4,3<span>/5</span></strong><span className="stars">★★★★<span>★</span></span><span>275 avis de clients</span></div><div className="review-copy"><h2>La confiance,<br/>ça se gagne au garage.</h2><p>Le meilleur aperçu du service ? L’expérience des gens qui sont déjà passés nous voir.</p><a className="text-link" href={google} target="_blank" rel="noreferrer">Lire les avis sur Google <ArrowUpRight size={18}/></a><small>Note et nombre d’avis relevés le 25 septembre 2026.</small></div></section>
       <section className="contact-section section-wrap" id="demande"><div className="contact-intro reveal"><p className="eyebrow">ON MET ÇA EN ROUTE ?</p><h2>Les bons pneus.<br/>Ça commence <br/><span>par un bonjour.</span></h2><p>Vous cherchez un ensemble de pneus ou un renseignement ? Essayez notre formulaire de démonstration et recevez les deux courriels à votre adresse.</p><a href="tel:+18195640019" className="contact-phone"><Phone size={26}/><span><small>VOUS PRÉFÉREZ JASER ?</small>819 564-0019</span></a><div className="no-booking"><Clock3 size={23}/><div><strong>Pas de rendez-vous. Pas de casse-tête.</strong><p>Pour la pose, présentez-vous au garage. L’attente peut varier selon l’achalandage, surtout en changement de saison.</p></div></div><img className="contact-photo" src="/goulet/garage.webp" alt="Le garage Pneus Goulet sur le boulevard Bourque" loading="lazy" width="1200" height="675"/></div><InquiryForm/></section>
-      <section className="faq-section section-wrap reveal"><h2>Avant de prendre la route.</h2><div className="faq-items"><details><summary>Est-ce que je dois prendre rendez-vous ?<ChevronDown size={20}/></summary><p>La pose de pneus se fait sans rendez-vous. Le temps d’attente dépend de l’affluence. Appelez le 819 564-0019 avant de vous déplacer si vous souhaitez vérifier les conditions du jour.</p></details><details><summary>Vendez-vous des pneus usagés ?<ChevronDown size={20}/></summary><p>Oui, Pneus Goulet propose des pneus neufs et usagés. Communiquez votre dimension et les renseignements de votre véhicule pour vérifier la disponibilité.</p></details><details><summary>Où trouver la dimension de mes pneus ?<ChevronDown size={20}/></summary><p>Elle est inscrite sur le flanc du pneu, sous une forme comme 205/55 R16. Vous pouvez également consulter l’étiquette dans l’ouverture de la portière du conducteur. L’équipe pourra vous guider.</p></details><details><summary>Le formulaire réserve-t-il une place ?<ChevronDown size={20}/></summary><p>Non. En mode démonstration, il vous envoie une confirmation et une copie du courriel propriétaire à votre propre adresse. Le garage ne reçoit aucun message et aucune place n’est réservée.</p></details></div></section>
-      <section className="location section-wrap reveal" id="contact"><div><MapPin size={26}/><h2>Le prochain arrêt :<br/>chez Goulet.</h2><address>7600, boulevard Bourque<br/>Sherbrooke (Québec) J1N 3K1</address><a href={maps} className="button button-red" target="_blank" rel="noreferrer">Prendre la direction du garage <ArrowUpRight size={18}/></a></div><div className="hours"><h3>Les heures du garage</h3><dl><div><dt>Lundi au vendredi</dt><dd>8 h à 12 h<br/>13 h à 16 h</dd></div><div><dt>Samedi et dimanche</dt><dd>Fermé</dd></div></dl><p>Horaires publiés sur Google. Les jours fériés et les périodes de pointe peuvent varier.</p><a href="tel:+18198641972">Autre numéro : 819 864-1972 <ArrowUpRight size={14}/></a></div></section>
+      <section className="faq-section section-wrap reveal"><h2>Avant de prendre la route.</h2><div className="faq-items"><details><summary>Est-ce que je dois prendre rendez-vous ?<ChevronDown size={20}/></summary><p>La pose de pneus se fait sans rendez-vous. Le temps d’attente dépend de l’affluence. Appelez le 819 564-0019 avant de vous déplacer si vous souhaitez vérifier les conditions du jour.</p></details><details><summary>Quels sont vos nouveaux services en atelier ?<ChevronDown size={20}/></summary><p>En plus de la vente et pose de pneus, nous proposons désormais la vente, la réparation et l’installation de démarreurs à distance, pare-brise, sièges chauffants, attache-remorques ainsi qu’une gamme complète d’accessoires pour autos et camions.</p></details><details><summary>Pneus usés : quelles marques avez-vous en stock ?<ChevronDown size={20}/></summary><p>Chez Pneus Goulet, nous avons toutes les grandes marques disponibles sur demande (Michelin, Goodyear, Toyo, Bridgestone, Continental, Firestone, etc.), en neuf comme en usagé sélectionné selon votre dimension et votre budget.</p></details><details><summary>Vendez-vous des pneus usagés ?<ChevronDown size={20}/></summary><p>Oui, Pneus Goulet propose des pneus neufs et usagés. Communiquez votre dimension et les renseignements de votre véhicule pour vérifier la disponibilité.</p></details><details><summary>Où trouver la dimension de mes pneus ?<ChevronDown size={20}/></summary><p>Elle est inscrite sur le flanc du pneu, sous une forme comme 205/55 R16. Vous pouvez également consulter l’étiquette dans l’ouverture de la portière du conducteur. L’équipe pourra vous guider.</p></details><details><summary>Le formulaire réserve-t-il une place ?<ChevronDown size={20}/></summary><p>Non. En mode démonstration, il vous envoie une confirmation et une copie du courriel propriétaire à votre propre adresse. Le garage ne reçoit aucun message et aucune place n’est réservée.</p></details></div></section>
+      <section className="location section-wrap reveal" id="contact">
+        <div className="location-grid">
+          <div><MapPin size={26}/><h2>Le prochain arrêt :<br/>chez Goulet.</h2><address>7600, boulevard Bourque<br/>Sherbrooke (Québec) J1N 3K1</address><a href={maps} className="button button-red" target="_blank" rel="noreferrer">Prendre la direction du garage <ArrowUpRight size={18}/></a></div>
+          <div className="hours"><h3>Les heures du garage</h3><dl><div><dt>Lundi au vendredi</dt><dd>8 h à 12 h<br/>13 h à 16 h</dd></div><div><dt>Samedi et dimanche</dt><dd>Fermé</dd></div></dl><p>Horaires publiés sur Google. Les jours fériés et les périodes de pointe peuvent varier.</p><a href="tel:+18198641972">Autre numéro : 819 864-1972 <ArrowUpRight size={14}/></a></div>
+        </div>
+        <div className="location-map-wrap reveal">
+          <div className="map-toolbar">
+            <div className="map-title-bar">
+              <span className="map-live-dot" aria-hidden="true"/>
+              <strong>EMPLACEMENT DE L'ATELIER</strong>
+              <span className="map-address-pill">7600, boul. Bourque, Sherbrooke</span>
+            </div>
+            <a href={maps} target="_blank" rel="noreferrer" className="map-open-link">
+              Ouvrir dans Google Maps <ArrowUpRight size={14}/>
+            </a>
+          </div>
+          <div className="map-frame-box">
+            <iframe
+              title="Carte de l'emplacement de Pneus Goulet à Sherbrooke"
+              src="https://maps.google.com/maps?q=7600+Boulevard+Bourque,+Sherbrooke,+QC+J1N+3K1&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
     </main><div className="checkered" aria-hidden="true"/><footer className="goulet-footer"><div className="footer-top"><a className="footer-brand" href="#accueil">PNEUS GOULET<span>DU BON MONDE. DES BONS PNEUS.</span></a><div><a href="tel:+18195640019">819 564-0019 <ArrowUpRight size={15}/></a><a href="mailto:pneusgoulet@hotmail.com">pneusgoulet@hotmail.com <ArrowUpRight size={15}/></a></div><div><a href="https://www.facebook.com/PneusGoulet" target="_blank" rel="noreferrer">Facebook <ArrowUpRight size={15}/></a><a href={google} target="_blank" rel="noreferrer">Google <ArrowUpRight size={15}/></a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Pneus Goulet. Tous droits réservés.</span><span>Fait avec du caractère par <a href="https://vision-tech-ai.com/" target="_blank" rel="noreferrer">Vision-Tech AI</a></span></div></footer>
   </div>;
 };

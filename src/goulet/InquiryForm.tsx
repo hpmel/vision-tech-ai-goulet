@@ -3,7 +3,19 @@ import { ArrowUpRight, Check, Mail, RotateCcw } from 'lucide-react';
 import type { GouletInquiry } from '../services/gouletInquiry';
 import { VehicleFields } from '../components/VehicleFields';
 
-const services: string[] = ['Pneus neufs', 'Pneus usagés', 'Pose de pneus', 'Entreposage', 'Jantes et mags', 'Autre demande'];
+const services: string[] = [
+  'Pneus neufs et usagés',
+  'Pose de pneus',
+  'Entreposage',
+  'Vente et pose de rim (mag)',
+  'Vente d’essuie-glace',
+  'Démarreur à distance',
+  'Pare-brise',
+  'Sièges chauffants',
+  'Attache-remorques',
+  'Accessoires d’autos et camions',
+  'Autre demande'
+];
 
 export const InquiryForm = (): ReactElement => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');

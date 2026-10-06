@@ -9,4 +9,6 @@ export interface GouletInquiry {
   email: string;
   size: string;
   notes: string;
+  date: string;
+  time: string;
 }

@@ -17,6 +17,12 @@
 .goulet-site .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(42px,5.8vw,82px);line-height:.98;letter-spacing:-1.2px}
 .goulet-site .form-grid label{min-width:0}
 .goulet-site .form-grid select{min-width:0;max-width:100%}
+.goulet-site .form-grid input[type="date"]{position:relative;cursor:pointer}
+.goulet-site .form-grid input[type="date"].no-date:before{content:attr(data-placeholder);position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;background:var(--paper);width:calc(100% - 44px)}
+.goulet-site[data-theme=dark] .form-grid input[type="date"].no-date:before{background:var(--paper);color:var(--muted)}
+.goulet-site .form-grid input[type="date"]::-webkit-calendar-picker-indicator{cursor:pointer;padding:4px}
+.goulet-site .date-warning{color:#c93b32;border-left:3px solid #c93b32;font-weight:600}
+.goulet-site[data-theme=dark] .date-warning{color:#f77f72;border-left-color:#f77f72}
 .goulet-site .demo-honeypot{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 .goulet-site fieldset.demo-form-fields{margin:0;padding:0;border:0;min-width:0}
 .goulet-site .form-submit:disabled{opacity:.65;cursor:wait}

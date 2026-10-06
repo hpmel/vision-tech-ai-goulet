@@ -80,6 +80,42 @@ const tireSizeGroups: { group: string; sizes: string[] }[] = [
   }
 ];
 
+const timeSlots: { value: string; label: string }[] = [
+  { value: '08:00', label: '08:00 (8 h 00)' },
+  { value: '09:00', label: '09:00 (9 h 00)' },
+  { value: '10:00', label: '10:00 (10 h 00)' },
+  { value: '11:00', label: '11:00 (11 h 00)' },
+  { value: '13:00', label: '13:00 (13 h 00)' },
+  { value: '14:00', label: '14:00 (14 h 00)' },
+  { value: '15:00', label: '15:00 (15 h 00)' },
+  { value: '16:00', label: '16:00 (16 h 00)' }
+];
+
+const isWeekend = (dateStr: string): boolean => {
+  if (!dateStr) return false;
+  const parts: number[] = dateStr.split('-').map(Number);
+  if (parts.length !== 3) return false;
+  const day: number = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
+  return day === 0 || day === 6;
+};
+
+const getMinBookingDate = (): string => {
+  const d: Date = new Date();
+  const year: number = d.getFullYear();
+  const month: string = String(d.getMonth() + 1).padStart(2, '0');
+  const day: string = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const getMaxBookingDate = (): string => {
+  const d: Date = new Date();
+  d.setMonth(d.getMonth() + 4);
+  const year: number = d.getFullYear();
+  const month: string = String(d.getMonth() + 1).padStart(2, '0');
+  const day: string = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
 const formatPhoneNumber = (value: string): string => {
   let digits: string = value.replace(/\D/g, '');
   if (digits.length === 11 && digits.startsWith('1')) {
@@ -100,6 +136,32 @@ export const InquiryForm = (): ReactElement => {
   const [phone, setPhone] = useState<string>('');
   const [sizeSelect, setSizeSelect] = useState<string>('');
   const [customSize, setCustomSize] = useState<string>('');
+  const [date, setDate] = useState<string>('');
+  const [time, setTime] = useState<string>('');
+  const [dateWarning, setDateWarning] = useState<string>('');
+  const [bookedSlots, setBookedSlots] = useState<string[]>((): string[] => {
+    try {
+      const raw: string | null = localStorage.getItem('goulet_booked_slots');
+      if (raw) return JSON.parse(raw) as string[];
+    } catch {
+      // ignore
+    }
+    return [];
+  });
+
+  const handleDateChange = (val: string): void => {
+    setDate(val);
+    setTime('');
+    if (!val) {
+      setDateWarning('');
+      return;
+    }
+    if (isWeekend(val)) {
+      setDateWarning('Le garage est fermé les samedis et dimanches. Veuillez choisir une date du lundi au vendredi (8 h à 17 h).');
+    } else {
+      setDateWarning('');
+    }
+  };
 
   const resetForm = (): void => {
     setStatus('idle');
@@ -109,6 +171,9 @@ export const InquiryForm = (): ReactElement => {
     setPhone('');
     setSizeSelect('');
     setCustomSize('');
+    setDate('');
+    setTime('');
+    setDateWarning('');
   };
 
   const prepare = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -116,7 +181,13 @@ export const InquiryForm = (): ReactElement => {
     if (status === 'sending') return;
     const data: FormData = new FormData(event.currentTarget);
     const read = (key: keyof GouletInquiry): string => String(data.get(key) ?? '').trim();
-    const resolvedSize = sizeSelect === 'autre' ? customSize.trim() : (sizeSelect || read('size'));
+    const resolvedSize: string = sizeSelect === 'autre' ? customSize.trim() : (sizeSelect || read('size'));
+    const resolvedDate: string = date.trim() || read('date');
+    const resolvedTime: string = time.trim() || read('time');
+    if (isWeekend(resolvedDate)) {
+      setDateWarning('Le garage est fermé les samedis et dimanches. Veuillez choisir un jour du lundi au vendredi.');
+      return;
+    }
     const inquiry: GouletInquiry = {
       make: read('make'),
       year: read('year'),
@@ -127,7 +198,9 @@ export const InquiryForm = (): ReactElement => {
       phone: phone.trim() || read('phone'),
       email: read('email'),
       size: resolvedSize,
-      notes: read('notes')
+      notes: read('notes'),
+      date: resolvedDate,
+      time: resolvedTime
     };
     setStatus('sending');
     setFeedback('');
@@ -139,7 +212,15 @@ export const InquiryForm = (): ReactElement => {
       });
       const result: { success?: boolean; error?: string } = await response.json() as { success?: boolean; error?: string };
       if (!response.ok || !result.success) throw new Error(result.error || 'Les courriels n’ont pas pu être envoyés.');
-      setFeedback(`Deux courriels de démonstration ont été envoyés à ${inquiry.email} : votre confirmation et la copie propriétaire. Vérifiez aussi vos indésirables.`);
+      if (resolvedDate && resolvedTime) {
+        const slotKey: string = `${resolvedDate}_${resolvedTime}`;
+        setBookedSlots((prev: string[]): string[] => {
+          const next: string[] = [...prev, slotKey];
+          try { localStorage.setItem('goulet_booked_slots', JSON.stringify(next)); } catch { /* ignore */ }
+          return next;
+        });
+      }
+      setFeedback(`Deux courriels de démonstration ont été envoyés à ${inquiry.email} : votre confirmation (avec votre date et heure) et la copie propriétaire. Vérifiez aussi vos indésirables.`);
       setStatus('success');
     } catch (error: unknown) {
       console.error('Échec de la demande de démonstration Goulet.', { error: error instanceof Error ? error.name : 'UnknownError' });
@@ -190,12 +271,62 @@ export const InquiryForm = (): ReactElement => {
             />
           </label>
         )}
-      </div>{service === 'Pose de pneus' && <p className="field-hint">La pose se fait sans rendez-vous. Appelez-nous pour connaître l’affluence avant de passer.</p>}</fieldset>
+      </div>{service === 'Pose de pneus' && <p className="field-hint">La pose peut se faire avec rendez-vous (ci-dessous) ou sans rendez-vous directement au comptoir.</p>}</fieldset>
+      <fieldset><legend>Date et heure souhaitées</legend><div className="form-grid">
+        <label>Date souhaitée *
+          <input
+            type="date"
+            name="date"
+            required
+            min={getMinBookingDate()}
+            max={getMaxBookingDate()}
+            value={date}
+            data-placeholder="Choisir une date"
+            className={date ? 'has-date' : 'no-date'}
+            onClick={(e): void => {
+              try {
+                (e.target as HTMLInputElement).showPicker?.();
+              } catch {
+                // fallback
+              }
+            }}
+            onChange={(event): void => handleDateChange(event.target.value)}
+          />
+        </label>
+        <label>Heure souhaitée *
+          <select
+            name="time"
+            required
+            disabled={!date || isWeekend(date)}
+            value={time}
+            onChange={(event): void => setTime(event.target.value)}
+          >
+            {!date && <option value="" disabled>Choisir une date d'abord</option>}
+            {date && isWeekend(date) && <option value="" disabled>Fermé le week-end (choisir Lun - Ven)</option>}
+            {date && !isWeekend(date) && (
+              <>
+                <option value="" disabled>Choisir une heure</option>
+                {timeSlots.map((slot) => {
+                  const slotKey: string = `${date}_${slot.value}`;
+                  const isBooked: boolean = bookedSlots.includes(slotKey);
+                  return (
+                    <option key={slot.value} value={slot.value} disabled={isBooked}>
+                      {slot.label}{isBooked ? ' — Déjà réservé (1/h)' : ''}
+                    </option>
+                  );
+                })}
+              </>
+            )}
+          </select>
+        </label>
+        {dateWarning && <p className="full-field field-hint date-warning" role="alert">{dateWarning}</p>}
+        <p className="full-field field-hint">Horaire d’atelier : Lundi au vendredi de 8 h à 17 h (dîner 12 h à 13 h). Maximum 1 rendez-vous par heure.</p>
+      </div></fieldset>
       <fieldset><legend>Vos coordonnées</legend><div className="form-grid">
         <label>Nom complet *<input name="name" autoComplete="name" placeholder="Votre nom" required maxLength={100}/></label>
         <label>Téléphone *<input name="phone" type="tel" autoComplete="tel" placeholder="(819) 000-0000" required value={phone} onChange={(event): void => setPhone(formatPhoneNumber(event.target.value))} minLength={14} maxLength={14}/></label>
         <label className="full-field">Courriel *<input name="email" type="email" autoComplete="email" placeholder="vous@exemple.ca" required maxLength={150}/></label>
-        <label className="full-field">Un petit mot de plus ?<textarea name="notes" placeholder="Votre besoin, votre budget, vos questions…" rows={3} maxLength={1500}/></label>
+        <label className="full-field">Notes / description du problème<textarea name="notes" placeholder="Votre besoin, vos précisions ou questions…" rows={3} maxLength={1500}/></label>
       </div></fieldset>
       </fieldset>
       <p className="form-note">MODE DÉMONSTRATION — Deux courriels sont envoyés uniquement à votre adresse. Aucune réservation réelle ni transmission au garage.</p>

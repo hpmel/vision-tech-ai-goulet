@@ -11,7 +11,8 @@ export const buildDemoEmails = (inquiry: DemoInquiry, garage: DemoGarage, refere
   const details: Array<[string, string]> = [
     ['Référence démo', reference], ['Nom', inquiry.name], ['Courriel', inquiry.email], ['Téléphone', inquiry.phone || 'Non précisé'],
     ['Service', inquiry.service], ['Véhicule', vehicle],
-    ...(garage === 'str' ? [['Date souhaitée', inquiry.date], ['Heure souhaitée', inquiry.time]] as Array<[string, string]> : [['Dimension des pneus', inquiry.size || 'À déterminer']] as Array<[string, string]>),
+    ['Dimension des pneus', inquiry.size || 'À déterminer'],
+    ['Date souhaitée', inquiry.date], ['Heure souhaitée', inquiry.time],
     ['Notes', inquiry.notes || 'Aucune note'],
   ];
   const detailText: string = details.map(([label, value]: [string, string]): string => `${label} : ${value}`).join('\n');

@@ -70,7 +70,26 @@ const HeroVideo = (): ReactElement => {
 export const GouletPage = (): ReactElement => {
   const page = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>((): 'light' | 'dark' => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const [theme, setTheme] = useState<'light' | 'dark'>((): 'light' | 'dark' => {
+    try {
+      const saved = localStorage.getItem('goulet-theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch {
+      // ignore
+    }
+    return 'dark';
+  });
+
+  const toggleTheme = (): void => {
+    const nextTheme: 'light' | 'dark' = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem('goulet-theme', nextTheme);
+    } catch {
+      // ignore
+    }
+  };
+
   useEffect((): (() => void) => {
     const match: gsap.MatchMedia = gsap.matchMedia();
     match.add('(prefers-reduced-motion: no-preference)', (): (() => void) => {
@@ -92,13 +111,13 @@ export const GouletPage = (): ReactElement => {
 
   return <div ref={page} className="goulet-site" data-theme={theme}>
     <a href="#main" className="skip-link">Aller au contenu</a>
-    <div className="announcement"><span>PNEUS NEUFS & USAGÉS</span><span>SANS RENDEZ-VOUS <span aria-hidden="true">✦</span> SHERBROOKE</span><a href={maps} target="_blank" rel="noreferrer">7600, boul. Bourque <ArrowUpRight size={12}/></a></div>
-    <header className="goulet-header"><a className="brand" href="#accueil" aria-label="Pneus Goulet, accueil"><img src="/goulet/logo.webp" alt="Pneus Goulet" width="220" height="110"/></a>
+    <div className="announcement"><span>PNEUS NEUFS & USAGÉS</span><span>AVEC OU SANS RENDEZ-VOUS <span aria-hidden="true">✦</span> SHERBROOKE</span><a href={maps} target="_blank" rel="noreferrer">7600, boul. Bourque <ArrowUpRight size={12}/></a></div>
+    <header className="goulet-header"><a className="brand" href="#accueil" aria-label="Pneus Goulet, accueil"><img src="/goulet/logo.webp" alt="Pneus Goulet" width="264" height="132"/></a>
       <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Navigation principale" id="main-nav"><a href="#services" onClick={(): void => setMenuOpen(false)}>Services réguliers</a><a href="#nouveautes" onClick={(): void => setMenuOpen(false)}>Nouveaux services</a><a href="#a-propos" onClick={(): void => setMenuOpen(false)}>L’esprit Goulet</a><a href="#contact" onClick={(): void => setMenuOpen(false)}>Nous trouver</a></nav>
-      <div className="header-actions"><button className="theme-toggle" aria-label={theme === 'light' ? 'Activer le thème sombre' : 'Activer le thème clair'} onClick={(): void => setTheme(theme === 'light' ? 'dark' : 'light')}>{theme === 'light' ? <Moon size={18}/> : <Sun size={18}/>}</button><a href="tel:+18195640019" className="header-phone" aria-label="Appeler le 819 564-0019"><Phone size={16}/><span>819 564-0019</span></a><a className="button button-red header-cta" href="#demande">Une question ? <ArrowUpRight size={17}/></a><button className="menu-toggle" aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOpen} aria-controls="main-nav" onClick={(): void => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button></div>
+      <div className="header-actions"><button className="theme-toggle" aria-label={theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'} title={theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'} onClick={toggleTheme}>{theme === 'dark' ? <Sun size={18}/> : <Moon size={18}/>}</button><a href="tel:+18195640019" className="header-phone" aria-label="Appeler le 819 564-0019"><Phone size={16}/><span>819 564-0019</span></a><a className="button button-red header-cta" href="#demande">Une question ? <ArrowUpRight size={17}/></a><button className="menu-toggle" aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOpen} aria-controls="main-nav" onClick={(): void => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button></div>
     </header>
     <main id="main">
-      <section className="hero" id="accueil" aria-labelledby="hero-title"><HeroVideo/><div className="hero-shade"/><div className="hero-inner"><div className="hero-copy"><p className="eyebrow"><span/> VOTRE ARRÊT PNEUS À SHERBROOKE</p><h1 id="hero-title">DU CARACTÈRE.<br/><span>DE LA TRACTION.</span></h1><p className="hero-intro">Des pneus neufs ou usagés. Du bon monde au comptoir.<br className="desktop-break"/> Et vous, de retour sur la route.</p><div className="hero-actions"><a href="#demande" className="button button-red">Trouver mes pneus <ArrowUpRight size={20}/></a><a href="tel:+18195640019" className="hero-call"><Phone size={17}/> On s’appelle ?</a></div></div><div className="hero-stamp"><span>PASSEZ NOUS VOIR</span><strong>SANS<br/>RENDEZ-VOUS</strong><span>ON S’OCCUPE DE VOS PNEUS</span><Star size={18} fill="currentColor"/></div></div><a href="#services" className="discover"><ArrowDown size={16}/> Faites un tour</a></section>
+      <section className="hero" id="accueil" aria-labelledby="hero-title"><HeroVideo/><div className="hero-shade"/><div className="hero-inner"><div className="hero-copy"><p className="eyebrow"><span/> VOTRE ARRÊT PNEUS À SHERBROOKE</p><h1 id="hero-title">QUAND LA TRACTION,<br/><span>EST NOTRE PASSION.</span></h1><p className="hero-intro">Des pneus neufs ou usagés. Du bon monde au comptoir.<br className="desktop-break"/> Et vous, de retour sur la route.</p><div className="hero-actions"><a href="#demande" className="button button-red">Trouver mes pneus <ArrowUpRight size={20}/></a><a href="tel:+18195640019" className="hero-call"><Phone size={17}/> On s’appelle ?</a></div></div><div className="hero-stamp"><span>PASSEZ NOUS VOIR</span><strong>SANS<br/>RENDEZ-VOUS</strong><span>ON S’OCCUPE DE VOS PNEUS</span><Star size={18} fill="currentColor"/></div></div><a href="#services" className="discover"><ArrowDown size={16}/> Faites un tour</a></section>
       <div className="checkered" aria-hidden="true"/>
       <section className="quick-facts" aria-label="Informations pratiques"><a href={google} target="_blank" rel="noreferrer"><strong>4,3<span>/5</span></strong><div><span className="stars" aria-label="Note Google de 4,3 sur 5">★★★★<span>★</span></span><span>275 avis sur Google <ArrowUpRight size={13}/></span></div></a><div><Clock3 size={25}/><p><strong>On vous accueille</strong><span>Lun. au ven. : 8 h à 12 h / 13 h à 16 h</span></p></div><a href={maps} target="_blank" rel="noreferrer"><MapPin size={25}/><p><strong>Au 7600, boul. Bourque</strong><span>Sherbrooke, c’est par ici <ArrowUpRight size={13}/></span></p></a></section>
       <section className="services-section section-wrap" id="services">
@@ -174,35 +193,30 @@ export const GouletPage = (): ReactElement => {
             <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
             <h3>Démarreur à distance</h3>
             <p>Affrontez l’hiver québécois au chaud. Systèmes fiables à longue portée avec télécommandes bidirectionnelles ou contrôle intelligent sur téléphone, adaptés à votre véhicule.</p>
-            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
           </article>
           <article className="new-service-card reveal">
             <div className="new-card-icon"><Shield size={26}/></div>
             <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
             <h3>Pare-brise</h3>
             <p>Réparation rapide d'impacts pour stopper la fissure et remplacement certifié avec vitres d'origine respectant les normes de sécurité les plus strictes.</p>
-            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
           </article>
           <article className="new-service-card reveal">
             <div className="new-card-icon"><Flame size={26}/></div>
             <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
             <h3>Sièges chauffants</h3>
             <p>Chaleur et confort instantanés. Installation soignée et invisible d'éléments chauffants intégrés directement sous le recouvrement d’origine de vos sièges.</p>
-            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
           </article>
           <article className="new-service-card reveal">
             <div className="new-card-icon"><Truck size={26}/></div>
             <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
             <h3>Attache-remorques</h3>
             <p>Vente et pose d'attelages de remorquage robustes, boîtiers électroniques et filage électrique sécuritaire pour vos remorques, roulottes, bateaux ou porte-vélos.</p>
-            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
           </article>
           <article className="new-service-card new-service-card-wide reveal">
             <div className="new-card-icon"><Wrench size={26}/></div>
             <div className="new-card-badge">VENTE · RÉPARATION · INSTALLATION</div>
             <h3>Accessoires d'autos et camions</h3>
             <p>Équipez et personnalisez votre véhicule pour le travail ou l'aventure : marchepieds, boîtes de camion (tonneau covers), déflecteurs, tapis weatherguard et accessoires sur mesure.</p>
-            <a href="#demande" className="new-card-link">Demander un prix <ArrowUpRight size={17}/></a>
           </article>
         </div>
         <div className="new-services-footer-banner reveal">

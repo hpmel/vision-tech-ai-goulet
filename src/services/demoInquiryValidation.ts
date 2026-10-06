@@ -17,7 +17,7 @@ export const validateDemoInquiry = (body: unknown, garage: DemoGarage): DemoInqu
   };
   const inquiry: DemoInquiry = {
     requestId: field('requestId', 36, true), name: field('name', 100, true), email: field('email', 150, true),
-    phone: field('phone', 30, garage === 'str'), make: field('make', 80, true), year: field('year', 4, true),
+    phone: field('phone', 30, true), make: field('make', 80, true), year: field('year', 4, true),
     model: field('model', 80, true), trim: field('trim', 80), service: field('service', 160, true),
     size: field('size', 40), notes: field('notes', 1500), date: field('date', 10, garage === 'str'), time: field('time', 5, garage === 'str'),
   };

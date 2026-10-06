@@ -12,6 +12,7 @@
 .demo-calendar-pricing h2{font-size:14px;font-weight:600;margin:0 0 9px;color:#f1edf5}
 .demo-calendar-pricing p{font-size:12px;line-height:1.8;color:var(--demo-muted);margin:0}
 .demo-calendar-pricing strong{color:#f1edf5;font-weight:600}
+.demo-calendar-pricing p.demo-tax-note{margin-top:10px;font-size:11px}
 .demo-consent{position:relative}
 .demo-consent-arrow{position:absolute;left:-94px;top:-79px;width:96px;height:96px;color:var(--demo-red);pointer-events:none;filter:drop-shadow(0 0 12px #f2444b33);animation:demo-consent-point 1.6s ease-in-out infinite}
 @keyframes demo-consent-point{0%,100%{transform:translate(-5px,-5px)}50%{transform:translate(3px,3px)}}

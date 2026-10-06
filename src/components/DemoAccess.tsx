@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState, type FormEvent, type ReactElement } from 'react';
-import { ArrowRight, ArrowUpRight, LockKeyhole, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, LockKeyhole, MoveDownRight, ShieldCheck } from 'lucide-react';
 import { clearDemoConsent, hasDemoConsent, saveDemoConsent } from '../services/demoAccess';
 import './demo-access.css';
 
@@ -47,7 +47,7 @@ export const DemoAccess = (): ReactElement => {
 
   return <div className="demo-access">
     <a className="demo-skip" href="#demo-conditions">Aller aux conditions d’accès</a>
-    <header className="demo-header"><a href="https://vision-tech-ai.com/" aria-label="Vision-Tech-Ai, site officiel"><img src="/logo-vision-tech-ai.svg" alt="Vision-Tech-Ai" width="224" height="56"/></a><span>Présentation exclusive <span className="demo-header-client">/ Pneus Goulet</span></span></header>
+    <header className="demo-header"><a href="https://vision-tech-ai.com/" aria-label="Vision-Tech-Ai, site officiel"><img src="/logo-vision-tech-ai.png" alt="Vision-Tech-Ai" width="318" height="159"/></a><span>Présentation exclusive <span className="demo-header-client">/ Pneus Goulet</span></span></header>
     <main className="demo-layout">
       <section className="demo-presentation" aria-labelledby="demo-title">
         <p className="demo-eyebrow">Un aperçu de ce qui vous attend</p>
@@ -55,6 +55,7 @@ export const DemoAccess = (): ReactElement => {
         <p className="demo-lead">Découvrez une création pensée pour Pneus Goulet. Une première vision, à façonner à votre image.</p>
         <div className="demo-offer"><div><span>Offre spéciale de lancement</span><strong>499 <span>$</span></strong></div><p>Un site qui vous ressemble.<br/>Une présence qui se démarque.</p></div>
         <div className="demo-customization"><h2>Tout commence par votre vision.</h2><p>Design, textes, images et services : cette démonstration est personnalisable. Le formulaire de rendez-vous peut aussi être adapté à vos besoins.</p><ul aria-label="Éléments personnalisables"><li>Design & couleurs</li><li>Textes & images</li><li>Services</li><li>Formulaire sur mesure</li></ul><p className="demo-small">Personnalisations et développements sur mesure moyennant des frais supplémentaires, selon vos demandes.</p></div>
+        <aside className="demo-calendar-pricing" aria-labelledby="demo-calendar-title"><h2 id="demo-calendar-title">Prise de rendez-vous automatisée</h2><p>Le prix de <strong>499 $ inclut une seule porte</strong> avec son calendrier de réservation automatique. Pour chaque porte supplémentaire, avec son propre calendrier, <strong>300 $ s’ajoutent au prix</strong>.</p></aside>
       </section>
       <section className="demo-entry" id="demo-conditions" aria-labelledby="demo-entry-title">
         <div className="demo-entry-top"><LockKeyhole size={22} aria-hidden="true"/><span>Accès à la démonstration</span></div>
@@ -62,7 +63,7 @@ export const DemoAccess = (): ReactElement => {
         <p className="demo-entry-intro">Cette création vous est présentée exclusivement à titre de démonstration et d’évaluation.</p>
         <div className="demo-rights"><ShieldCheck size={22} aria-hidden="true"/><div><h3>Une création de Vision-Tech-Ai</h3><p>La conception du site et les éléments originaux créés par Vision-Tech-Ai demeurent sa propriété. Cet accès ne vous accorde aucun droit de copie, de reproduction ou de réutilisation sans autorisation.</p><p>Les marques et contenus de tiers demeurent la propriété de leurs titulaires respectifs.</p></div></div>
         <form onSubmit={enterDemo}>
-          <label className="demo-consent"><input type="checkbox" required checked={checked} onChange={(event): void => setChecked(event.currentTarget.checked)} aria-describedby="demo-consent-help"/><span>Je comprends que ce site est présenté uniquement à titre de démonstration et je m’engage à ne pas copier ni réutiliser la création de Vision-Tech-Ai sans autorisation.</span></label>
+          <label className="demo-consent">{!checked && <MoveDownRight className="demo-consent-arrow" size={96} strokeWidth={3} aria-hidden="true"/>}<input type="checkbox" required checked={checked} onChange={(event): void => setChecked(event.currentTarget.checked)} aria-describedby="demo-consent-help"/><span>Je comprends que ce site est présenté uniquement à titre de démonstration et je m’engage à ne pas copier ni réutiliser la création de Vision-Tech-Ai sans autorisation.</span></label>
           <button className="demo-enter" type="submit" disabled={!checked}>Accéder à la démonstration <ArrowRight size={19} aria-hidden="true"/></button>
           <p id="demo-consent-help" className="demo-access-help">{checked ? 'Vous pouvez maintenant découvrir la démonstration.' : 'Cochez la case pour accéder à la démonstration.'}</p>
         </form>

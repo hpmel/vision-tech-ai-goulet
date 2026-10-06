@@ -69,6 +69,6 @@ export const DemoAccess = (): ReactElement => {
         </form>
       </section>
     </main>
-    <footer className="demo-footer"><span>© {new Date().getFullYear()} Vision-Tech-Ai · Création originale</span><a href="mailto:vision.tech.ai7@gmail.com">Parlons de votre projet <ArrowUpRight size={15} aria-hidden="true"/></a></footer>
+    <footer className="demo-footer"><span>© {new Date().getFullYear()} Vision-Tech-Ai · Création originale</span><a href="https://vision-tech-ai.runable.site/">Parlons de votre projet <ArrowUpRight size={15} aria-hidden="true"/></a></footer>
   </div>;
 };
